@@ -21,7 +21,7 @@ public class RealEstateAdService {
     private final AddressRepo addressRepo;
     private final UserService userService;
 
-    public ApiResponse add(Principal principal, RealEstateAdRequest adRequest) {
+    public ApiResponse add(Principal principle, RealEstateAdRequest adRequest) {
         var realEstate = new RealEstateAd();
         realEstate.setYearBuilt(adRequest.getYearBuilt());
         realEstate.setPrice(adRequest.getPrice());
@@ -39,7 +39,7 @@ public class RealEstateAdService {
         addressRepo.save(address);
         realEstate.setAddress(address);
 
-        Users owner = userService.getUserByEmail(principal.getName());
+        Users owner = userService.getUserByEmail(principle.getName());
         realEstate.setOwner(owner);
 
         realEstateAdRepo.save(realEstate);

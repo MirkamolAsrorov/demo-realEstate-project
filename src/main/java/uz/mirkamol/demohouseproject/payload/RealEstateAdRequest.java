@@ -30,6 +30,6 @@ public class RealEstateAdRequest {
     private int sqft;
 
     @NotNull
-    private final Address address;
+    private  Address address;
 
 }
