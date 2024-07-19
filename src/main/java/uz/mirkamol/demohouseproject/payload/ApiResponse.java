@@ -13,13 +13,5 @@ public class ApiResponse {
     private Object data;
     private String accessToken;
 
-    public ApiResponse(String message, boolean success) {
-        this.message = message;
-        this.success = success;
-    }
-    public ApiResponse(String message, boolean success, String accessToken) {
-        this.message = message;
-        this.success = success;
-        this.accessToken = accessToken;
-    }
+
 }

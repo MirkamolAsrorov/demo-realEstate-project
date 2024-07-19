@@ -1,6 +1,5 @@
 package uz.mirkamol.demohouseproject.security.jwt;
 
-import com.auth0.jwt.exceptions.TokenExpiredException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import uz.mirkamol.demohouseproject.exception.CustomExpiredJwtException;
 import uz.mirkamol.demohouseproject.security.UserPrinciple;
 import uz.mirkamol.demohouseproject.security.UserPrincipleAuthenticationToken;
 

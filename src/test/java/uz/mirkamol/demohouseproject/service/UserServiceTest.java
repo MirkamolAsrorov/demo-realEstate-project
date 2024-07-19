@@ -1,14 +1,11 @@
 package uz.mirkamol.demohouseproject.service;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import uz.mirkamol.demohouseproject.exception.CustomNotFoundException;
 import uz.mirkamol.demohouseproject.model.Users;
 import uz.mirkamol.demohouseproject.payload.ApiResponse;
@@ -17,9 +14,7 @@ import uz.mirkamol.demohouseproject.repository.UserRepo;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,17 +28,13 @@ class UserServiceTest {
 
     @Mock
     private UserRepo userRepo;
-    private AutoCloseable autoCloseable;
-    @Mock
-    private PasswordEncoder passwordEncoder;
+
 
     private UserRequest userRequest;
     private Users users;
 
     @BeforeEach
     void setUp() {
-//        autoCloseable = MockitoAnnotations.openMocks(this);
-//        underTest = new UserService(userRepo, passwordEncoder);
         userRequest = UserRequest.builder()
                 .email("email@example.com")
                 .password("password1234")
@@ -57,12 +48,6 @@ class UserServiceTest {
                 .phoneNumber(userRequest.getPhoneNumber())
                 .build();
     }
-//
-//    @AfterEach
-//    void tearDown() throws Exception {
-//        autoCloseable.close();
-//    }
-
     @Test
     void testAddUser_UserAlreadyExists() {
         // Arrange

@@ -15,7 +15,6 @@ import uz.mirkamol.demohouseproject.payload.ApiResponse;
 import uz.mirkamol.demohouseproject.payload.RealEstateAdRequest;
 import uz.mirkamol.demohouseproject.repository.AddressRepo;
 import uz.mirkamol.demohouseproject.repository.RealEstateAdRepo;
-import uz.mirkamol.demohouseproject.repository.UserRepo;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -40,8 +39,7 @@ class RealEstateAdServiceTest {
     private RealEstateAdRepo realEstateAdRepo;
     @Mock
     private AddressRepo addressRepo;
-    @Mock
-    private UserRepo userRepo;
+
     @Mock
     private Users user;
     @Mock
@@ -50,8 +48,6 @@ class RealEstateAdServiceTest {
     private RealEstateAd realEstateAd;
     @Mock
     private RealEstateAdRequest realEstateAdRequest;
-    @Mock
-    private Principal principal;
 
     @BeforeEach
     void setUp() {
