@@ -14,23 +14,25 @@ public class ImageService {
     private final ImageRepo imageRepo;
 
     public String upload(MultipartFile mFile) throws IOException {
-        var image = Images.builder()
-                .name(mFile.getOriginalFilename())
-                .type(mFile.getContentType())
-                .imageData(mFile.getBytes())
-                .build();
-        imageRepo.save(image);
+            if (mFile.isEmpty()) {
+                return "Please select a file to upload";
+            }
+            var image = Images.builder()
+                    .name(mFile.getOriginalFilename())
+                    .type(mFile.getContentType())
+                    .imageData(mFile.getBytes())
+                    .build();
 
-        if (image.getId() != null) {
+            imageRepo.save(image);
+
             return "Image uploaded successfully";
         }
 
-        return "oops! something went wrong";
-    }
 
     public byte[] getImage(String fileName) {
         var image = imageRepo.findByName(fileName);
         return image.map(Images::getImageData).orElse(null);
     }
 }
+
 
